@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->string('attestation_diplome')->nullable();
+            $table->string('attestation_med')->nullable();
+            $table->string('attestation_nationalite')->nullable();
+            $table->string('bonne_vie_moeurs')->nullable();
+            $table->string('bulletins')->nullable();
+            $table->string('bulletins2')->nullable();
+            $table->unsignedBigInteger('stagiaire_id');
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
+            $table->string('photo_pass')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

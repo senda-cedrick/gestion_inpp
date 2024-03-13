@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tuteurs', function (Blueprint $table) {
+        Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('coordonner_id');
-            $table->foreign('coordonner_id')->references('id')->on('coordonners')->onDelete('restrict')->onUpdate('cascade');
-            $table->string('nom_entreprise');
-            $table->string('adresse_entreprise');
-            $table->string('contact_entreprise');
+            $table->string('nom_option');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tuteurs');
+        Schema::dropIfExists('options');
     }
 };

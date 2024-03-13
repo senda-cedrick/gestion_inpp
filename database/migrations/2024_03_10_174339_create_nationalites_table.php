@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('nationalites', function (Blueprint $table) {
             $table->id();
+            $table->string('nationalite_congo');
+            $table->string('nationalite_afrique');
+            $table->string('resident_congo');
+            $table->string('titulaire_bac');
+            $table->string('cycle_licence');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

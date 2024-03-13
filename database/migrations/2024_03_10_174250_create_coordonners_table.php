@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('coordonners', function (Blueprint $table) {
             $table->id();
+            $table->string('adresse_complete');
+            $table->string('code_postal');
+            $table->string('district');
+            $table->string('email');
+            $table->string('mobil');
+            $table->string('mobil_fixe')->nullable();
+            $table->string('pays');
+            $table->string('province');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('fichiers', function (Blueprint $table) {
             $table->id();
+            $table->string('nom_fichier');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
