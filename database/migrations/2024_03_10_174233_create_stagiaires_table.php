@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('stagiaires', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('coordonner_id');
-            $table->foreign('coordonner_id')->references('id')->on('coordonners')->onDelete('restrict')->onUpdate('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->date('date_nais');

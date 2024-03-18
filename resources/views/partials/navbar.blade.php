@@ -65,7 +65,7 @@
         </a>
         </li>
         <li class="nav-item menu-items">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
+        <a class="nav-link" href=" {{ route('stagiaire') }} ">
             <span class="menu-icon">
             <i class="mdi mdi-account-multiple"></i>
             </span>

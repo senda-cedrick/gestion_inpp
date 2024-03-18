@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\StagiaireController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,13 @@ Route::controller(OptionController::class)->group(function(){
     Route::get('optionUpdateForm', 'updateform')->name('optionUpdateForm');
     Route::post('optionUpdateProcess', 'updateProcess')->name('optionUpdateProcess');
     Route::get('optionDelete', 'delete')->name('optionDelete');
+});
+
+Route::controller(StagiaireController::class)->group(function(){
+    Route::get('stagiaire', 'index')->name('stagiaire');
+    Route::get('stagiaireAdd', 'addform')->name('stagiaireAddForm');
+    Route::post('stagiaireddprocess', 'addstagiaire')->name('stagiaireAddProcess');
+    Route::get('stagiaireUpdateForm', 'updateform')->name('stagiaireUpdateForm');
+    Route::post('stagiaireUpdateProcess', 'updateProcess')->name('stagiaireUpdateProcess');
+    Route::get('stagiaireDelete', 'delete')->name('stagiaireDelete');
 });

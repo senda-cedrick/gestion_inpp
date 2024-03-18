@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('coordonners', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('stagiaire_id');
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
             $table->string('adresse_complete');
             $table->string('code_postal');
             $table->string('district');

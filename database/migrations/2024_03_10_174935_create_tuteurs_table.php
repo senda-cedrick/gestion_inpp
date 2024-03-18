@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tuteurs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('coordonner_id');
-            $table->foreign('coordonner_id')->references('id')->on('coordonners')->onDelete('restrict')->onUpdate('cascade');
+            $table->unsignedBigInteger('stagiaire_id');
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
             $table->string('nom_entreprise');
             $table->string('adresse_entreprise');
             $table->string('contact_entreprise');
