@@ -13,6 +13,7 @@ class Coordonner extends Model
     protected $date = ['deleted_at'];
 
     protected $fillable = [
+        'stagiaire_id',
         'adresse_complete',
         'code_postal',
         'district',

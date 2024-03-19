@@ -39,8 +39,8 @@
                               <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                              <a class="dropdown-item" href=" {{ route('stagiaireUpdateForm', ['id' => $option->id]) }} "><i class="mdi mdi-pencil"></i> Modifier</a>
-                              <a class="dropdown-item" href=" {{ route('stagiaireDelete', ['id' => $option->id]) }} "><i class="mdi mdi-bitbucket"></i> Supprimer</a>
+                              <a class="dropdown-item" href=" {{ route('stagiaireUpdateForm', ['id' => $stagiaire->id]) }} "><i class="mdi mdi-pencil"></i> Modifier</a>
+                              <a class="dropdown-item" href=" {{ route('stagiaireDelete', ['id' => $stagiaire->id]) }} "><i class="mdi mdi-bitbucket"></i> Supprimer</a>
                             </div>
                           </div> </td>
                             </tr>
