@@ -30,4 +30,9 @@ class Stagiaire extends Model
         'sexe_stg',
         'status_stag',
     ];
+
+    public function coordonneer()
+    {
+        return $this->hasMany(Coordonner::class);
+    }
 }
