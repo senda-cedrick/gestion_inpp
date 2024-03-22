@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('bulletins')->nullable();
             $table->string('bulletins2')->nullable();
             $table->unsignedBigInteger('stagiaire_id');
-            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('cascade')->onUpdate('cascade');
             $table->string('photo_pass')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -22,6 +22,7 @@
                                 <th>Prenom</th>
                                 <th>Date de Naissance</th>
                                 <th>Sexe</th>
+                                <th>N° Carte</th>
                                 <th>Statut</th>
                                 <th>Action</th>
                             </tr>
@@ -33,6 +34,7 @@
                                 <td> {{$stagiaire->prenom_stag}} </td>
                                 <td> {{$stagiaire->date_nais}} </td>
                                 <td> {{$stagiaire->sexe_stg}} </td>
+                                <td> {{$stagiaire->num_carte_stag}} </td>
                                 <td> {{$stagiaire->status_stag}} </td>
                                 <td> <div class="dropdown">
                             <a id="dropdownMenuIconButton1" data-toggle="dropdown" >

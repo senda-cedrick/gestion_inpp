@@ -13,7 +13,8 @@ class FiliereController extends Controller
         return view('filiere.filiere', compact('filieres'));
     }
 
-    public function addform(){
+    public function addform()
+    {
         return view('filiere.filiereadd');
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tuteurs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('stagiaire_id');
-            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nom_entreprise');
             $table->string('adresse_entreprise');
             $table->string('contact_entreprise');

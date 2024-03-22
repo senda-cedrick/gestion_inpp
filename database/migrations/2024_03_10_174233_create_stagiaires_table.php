@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('stagiaires', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->date('date_nais');
             $table->string('lieu_nais');
             $table->string('nationalite');

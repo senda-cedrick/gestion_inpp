@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CoordonnerController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\InscripSolicitController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\StagiaireController;
 use Illuminate\Support\Facades\Route;
@@ -45,4 +48,25 @@ Route::controller(StagiaireController::class)->group(function(){
     Route::get('stagiaireUpdateForm', 'updateform')->name('stagiaireUpdateForm');
     Route::post('stagiaireUpdateProcess', 'updateProcess')->name('stagiaireUpdateProcess');
     Route::get('stagiaireDelete', 'delete')->name('stagiaireDelete');
+});
+
+Route::controller(CoordonnerController::class)->group(function(){
+    Route::get('coordonnee', 'index')->name('coordonnee');
+    Route::get('coordonneeUpdateForm', 'updateform')->name('coordonneeUpdateForm');
+    Route::post('coordonneeUpdateProcess', 'updateProcess')->name('coordonneeUpdateProcess');
+    Route::get('coordonneeDelete', 'delete')->name('coordonneeDelete');
+});
+
+Route::controller(DocumentController::class)->group(function(){
+    Route::get('document', 'index')->name('document');
+    Route::get('documentUpdateForm', 'updateform')->name('documentUpdateForm');
+    Route::post('documentUpdateProcess', 'updateProcess')->name('documentUpdateProcess');
+    Route::get('documentDelete', 'delete')->name('documentDelete');
+});
+
+Route::controller(InscripSolicitController::class)->group(function(){
+    Route::get('inscripsolicit', 'index')->name('inscripsolicit');
+    Route::get('inscripsolicitUpdateForm', 'updateform')->name('inscripsolicitUpdateForm');
+    Route::post('inscripsolicitUpdateProcess', 'updateProcess')->name('inscripsolicitUpdateProcess');
+    Route::get('inscripsolicitDelete', 'delete')->name('inscripsolicitDelete');
 });

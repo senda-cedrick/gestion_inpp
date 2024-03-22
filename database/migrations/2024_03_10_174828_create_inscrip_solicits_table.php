@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('inscrip_solicits', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('stagiaire_id');
-            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('filiere_id');
-            $table->foreign('filiere_id')->references('id')->on('filieres')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('filiere_id')->references('id')->on('filieres')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('option_id');
-            $table->foreign('option_id')->references('id')->on('options')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
