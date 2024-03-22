@@ -1,9 +1,13 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\CoordonnerController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\InscripSolicitController;
+=======
+use App\Http\Controllers\FiliereController;
+>>>>>>> 1a5d1b22 (Initial commit)
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\StagiaireController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +53,7 @@ Route::controller(StagiaireController::class)->group(function(){
     Route::post('stagiaireUpdateProcess', 'updateProcess')->name('stagiaireUpdateProcess');
     Route::get('stagiaireDelete', 'delete')->name('stagiaireDelete');
 });
+<<<<<<< HEAD
 
 Route::controller(CoordonnerController::class)->group(function(){
     Route::get('coordonnee', 'index')->name('coordonnee');
@@ -70,3 +75,5 @@ Route::controller(InscripSolicitController::class)->group(function(){
     Route::post('inscripsolicitUpdateProcess', 'updateProcess')->name('inscripsolicitUpdateProcess');
     Route::get('inscripsolicitDelete', 'delete')->name('inscripsolicitDelete');
 });
+=======
+>>>>>>> 1a5d1b22 (Initial commit)

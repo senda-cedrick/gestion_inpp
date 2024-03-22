@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('date_confirmation');
             $table->string('num_dossier');
             $table->unsignedBigInteger('document_id');
+<<<<<<< HEAD
             $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('stagiaire_id');
             $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('cascade')->onUpdate('cascade');
@@ -27,6 +28,19 @@ return new class extends Migration
             $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('nationalite_id');
             $table->foreign('nationalite_id')->references('id')->on('nationalites')->onDelete('cascade')->onUpdate('cascade');
+=======
+            $table->foreign('document_id')->references('id')->on('documents')->onDelete('restrict')->onUpdate('cascade');
+            $table->unsignedBigInteger('stagiaire_id');
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
+            $table->unsignedBigInteger('inscription_id');
+            $table->foreign('inscription_id')->references('id')->on('inscrip_solicits')->onDelete('restrict')->onUpdate('cascade');
+            $table->unsignedBigInteger('tuteur_id');
+            $table->foreign('tuteur_id')->references('id')->on('tuteurs')->onDelete('restrict')->onUpdate('cascade');
+            $table->unsignedBigInteger('reservation_id');
+            $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('restrict')->onUpdate('cascade');
+            $table->unsignedBigInteger('nationalite_id');
+            $table->foreign('nationalite_id')->references('id')->on('nationalites')->onDelete('restrict')->onUpdate('cascade');
+>>>>>>> 1a5d1b22 (Initial commit)
             $table->softDeletes();
             $table->timestamps();
         });

@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('coordonners', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('stagiaire_id');
+<<<<<<< HEAD
             $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('cascade')->onUpdate('cascade');
+=======
+            $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('restrict')->onUpdate('cascade');
+>>>>>>> 1a5d1b22 (Initial commit)
             $table->string('adresse_complete');
             $table->string('code_postal');
             $table->string('district');

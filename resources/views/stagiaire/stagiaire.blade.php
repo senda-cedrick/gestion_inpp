@@ -22,7 +22,10 @@
                                 <th>Prenom</th>
                                 <th>Date de Naissance</th>
                                 <th>Sexe</th>
+<<<<<<< HEAD
                                 <th>N° Carte</th>
+=======
+>>>>>>> 1a5d1b22 (Initial commit)
                                 <th>Statut</th>
                                 <th>Action</th>
                             </tr>
@@ -34,7 +37,10 @@
                                 <td> {{$stagiaire->prenom_stag}} </td>
                                 <td> {{$stagiaire->date_nais}} </td>
                                 <td> {{$stagiaire->sexe_stg}} </td>
+<<<<<<< HEAD
                                 <td> {{$stagiaire->num_carte_stag}} </td>
+=======
+>>>>>>> 1a5d1b22 (Initial commit)
                                 <td> {{$stagiaire->status_stag}} </td>
                                 <td> <div class="dropdown">
                             <a id="dropdownMenuIconButton1" data-toggle="dropdown" >

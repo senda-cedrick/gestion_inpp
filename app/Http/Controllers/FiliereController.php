@@ -13,8 +13,12 @@ class FiliereController extends Controller
         return view('filiere.filiere', compact('filieres'));
     }
 
+<<<<<<< HEAD
     public function addform()
     {
+=======
+    public function addform(){
+>>>>>>> 1a5d1b22 (Initial commit)
         return view('filiere.filiereadd');
     }
 

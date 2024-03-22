@@ -8,9 +8,13 @@ use App\Models\Filiere;
 use App\Models\InscripSolicit;
 use App\Models\Option;
 use App\Models\Stagiaire;
+<<<<<<< HEAD
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+=======
+use Illuminate\Http\Request;
+>>>>>>> 1a5d1b22 (Initial commit)
 
 class StagiaireController extends Controller
 {
@@ -30,6 +34,7 @@ class StagiaireController extends Controller
 
     public function addstagiaire(Request $request)
     {
+<<<<<<< HEAD
         $year = Carbon::now()->format('y');
         $month = Carbon::now()->format('m');
         $day = Carbon::now()->format('d');
@@ -37,6 +42,8 @@ class StagiaireController extends Controller
         $prefix = substr($option->nom_option, 0, 3);
         $random = Str::random(5);
 
+=======
+>>>>>>> 1a5d1b22 (Initial commit)
         $stagiaire = Stagiaire::create([
             'user_id' => 1,
             'nom_stagiaire' => $request->nom,
@@ -51,7 +58,11 @@ class StagiaireController extends Controller
             'nbr_enfant' => $request->nbrenfant,
             'num_passeport' => $request->passeport,
             'num_carte_elect' => $request->carteElecteur,
+<<<<<<< HEAD
             'num_carte_stag' => $prefix . $year . $month . $day . $random,
+=======
+            'num_carte_stag' => "Attentesskkkks",
+>>>>>>> 1a5d1b22 (Initial commit)
             'status_stag' => "Attente",
         ]);
 

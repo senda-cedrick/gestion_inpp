@@ -97,7 +97,11 @@
                         <input type="text" class="form-control" name="codepostal" placeholder="Code postal" required>
                     </div>
                     <div class="form-group col-md-4">
+<<<<<<< HEAD
                         <label for="exampleInputUsername1">E-mail *</label>
+=======
+                        <label for="exampleInputUsername1">E-mail </label>
+>>>>>>> 1a5d1b22 (Initial commit)
                         <input type="mail" class="form-control" name="email" placeholder="adresse mail">
                     </div>
                 </div>
@@ -121,7 +125,11 @@
                         <input type="text" class="form-control" name="province" placeholder="Province" required>
                     </div>
                     <div class="form-group col-md-4">
+<<<<<<< HEAD
                         <label for="exampleInputUsername1">District *</label>
+=======
+                        <label for="exampleInputUsername1">District </label>
+>>>>>>> 1a5d1b22 (Initial commit)
                         <input type="text" class="form-control" name="district" placeholder="District">
                     </div>
                 </div>

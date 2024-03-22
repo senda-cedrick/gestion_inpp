@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->unsignedBigInteger('filiere_id');
             $table->foreign('filiere_id')->references('id')->on('filieres')->onDelete('cascade')->onUpdate('cascade');
+=======
+>>>>>>> 1a5d1b22 (Initial commit)
             $table->string('nom_option');
             $table->softDeletes();
             $table->timestamps();
