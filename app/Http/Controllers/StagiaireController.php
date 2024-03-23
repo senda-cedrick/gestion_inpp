@@ -5,16 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Coordonner;
 use App\Models\Document;
 use App\Models\Filiere;
+use App\Models\IdCounter;
 use App\Models\InscripSolicit;
 use App\Models\Option;
 use App\Models\Stagiaire;
-<<<<<<< HEAD
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-=======
-use Illuminate\Http\Request;
->>>>>>> 1a5d1b22 (Initial commit)
 
 class StagiaireController extends Controller
 {
@@ -34,16 +31,16 @@ class StagiaireController extends Controller
 
     public function addstagiaire(Request $request)
     {
-<<<<<<< HEAD
         $year = Carbon::now()->format('y');
         $month = Carbon::now()->format('m');
         $day = Carbon::now()->format('d');
         $option = Option::whereKey($request->option)->first();
         $prefix = substr($option->nom_option, 0, 3);
-        $random = Str::random(5);
+        $idCounter = IdCounter::firstOrCreate(['current_year' => $year]);
+        $idCounter->counter++;
+        $idCounter->save();
+        $numCartStg = $prefix . $year . $month . $day . str_pad($idCounter->counter, 5, '0', STR_PAD_LEFT);
 
-=======
->>>>>>> 1a5d1b22 (Initial commit)
         $stagiaire = Stagiaire::create([
             'user_id' => 1,
             'nom_stagiaire' => $request->nom,
@@ -58,11 +55,7 @@ class StagiaireController extends Controller
             'nbr_enfant' => $request->nbrenfant,
             'num_passeport' => $request->passeport,
             'num_carte_elect' => $request->carteElecteur,
-<<<<<<< HEAD
-            'num_carte_stag' => $prefix . $year . $month . $day . $random,
-=======
-            'num_carte_stag' => "Attentesskkkks",
->>>>>>> 1a5d1b22 (Initial commit)
+            'num_carte_stag' => $numCartStg,
             'status_stag' => "Attente",
         ]);
 
@@ -103,12 +96,8 @@ class StagiaireController extends Controller
     public function updateform(Request $request)
     {
         $stagiaire = Stagiaire::find($request->id);
-        $coordonnes = Coordonner::where('stagiaire_id', $request->id)->first();
-        $insc_filiere = InscripSolicit::where('stagiaire_id', $request->id)->first();
-        $documents = Document::where('stagiaire_id', $request->id)->first();
-        $filieres = Filiere::all();
-        $options = Option::all();
-        return view('stagiaire.stagiaireupdate', compact('stagiaire', 'filieres', 'options', 'coordonnes', 'insc_filiere', 'documents'));
+        
+        return view('stagiaire.stagiaireupdate', compact('stagiaire'));
     }
 
     public function updateProcess(Request $request)
@@ -129,39 +118,7 @@ class StagiaireController extends Controller
         $stagiaire->num_carte_elect = $request->carteElecteur;
         $stagiaire->update();
 
-        $stagiaire_id = $stagiaire->id;
-
-        $coordonees = Coordonner::where('stagiaire_id', $request->id)->first();
-        $coordonees->stagiaire_id = $stagiaire_id;
-        $coordonees->adresse_complete = $request->adresse;
-        $coordonees->code_postal = $request->codepostal;
-        $coordonees->email = $request->email;
-        $coordonees->mobil = $request->phone;
-        $coordonees->mobil_fixe = $request->phonefixe;
-        $coordonees->pays = $request->pays;
-        $coordonees->province = $request->province;
-        $coordonees->district = $request->district;
-        $coordonees->update();
-
-        $documents = Document::where('stagiaire_id', $request->id)->first();
-        $documents->stagiaire_id = $stagiaire_id;
-        $documents->photo_pass = $request->photo;
-        $documents->attestation_diplome = $request->diplome;
-        $documents->attestation_med = $request->attmed;
-        $documents->attestation_nationalite = $request->attnat;
-        $documents->bonne_vie_moeurs = $request->bvm;
-        $documents->bulletins = $request->bulletin;
-        $documents->bulletins2 = $request->bulletin2;
-        $documents->update();
-
-        $inscription_sol = InscripSolicit::where('stagiaire_id', $request->id)->first();
-        $inscription_sol->stagiaire_id = $stagiaire_id;
-        $inscription_sol->filiere_id = $request->filiere;
-        $inscription_sol->option_id = $request->option;
-        $inscription_sol->update();
-
         return redirect('stagiaire');
-        //$stagiaire->update();
     }
 
     public function delete(Request $request)

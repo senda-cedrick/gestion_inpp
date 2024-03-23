@@ -17,4 +17,19 @@ class InscripSolicit extends Model
         'filiere_id',
         'option_id'
     ];
+
+    public function stagiaire()
+    {
+        return $this->belongsTo(Stagiaire::class);
+    }
+
+    public function filiere()
+    {
+        return $this->belongsTo(Filiere::class);
+    }
+
+    public function option()
+    {
+        return $this->belongsTo(Option::class);
+    }
 }

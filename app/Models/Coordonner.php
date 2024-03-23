@@ -23,4 +23,9 @@ class Coordonner extends Model
         'pays',
         'province'
     ];
+
+    public function stagiaire()
+    {
+        return $this->belongsTo(Stagiaire::class);
+    }
 }

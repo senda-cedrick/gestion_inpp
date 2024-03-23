@@ -22,4 +22,9 @@ class Document extends Model
         'stagiaire_id',
         'photo_pass',
     ];
+
+    public function stagiaire()
+    {
+        return $this->belongsTo(Stagiaire::class);
+    }
 }

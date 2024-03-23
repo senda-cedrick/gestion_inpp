@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('id_counters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('filiere_id');
-            $table->foreign('filiere_id')->references('id')->on('filieres')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('nom_option');
-            $table->softDeletes();
+            $table->string('current_year');
+            $table->unsignedInteger('counter')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('id_counters');
     }
 };

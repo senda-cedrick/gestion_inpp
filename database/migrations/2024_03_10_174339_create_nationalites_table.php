@@ -19,11 +19,7 @@ return new class extends Migration
             $table->string('titulaire_bac');
             $table->string('cycle_licence');
             $table->unsignedBigInteger('user_id');
-<<<<<<< HEAD
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-=======
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
->>>>>>> 1a5d1b22 (Initial commit)
             $table->softDeletes();
             $table->timestamps();
         });
