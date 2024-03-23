@@ -14,6 +14,7 @@
             <div class="card">
                 <div class="card-body">
                 <a class="btn btn-primary"  href=" {{ route('stagiaireAddForm') }} ">Ajouter</a>
+                <a class="btn btn-success"  href=" {{ route('stagiaireAddForm') }} ">Imprimer</a>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -28,21 +29,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($stagiaires as $stagiaire)
+                            @foreach ($documents as $document)
                             <tr>
-                                <td> {{$stagiaire->nom_stagiaire}} </td>
-                                <td> {{$stagiaire->prenom_stag}} </td>
-                                <td> {{$stagiaire->date_nais}} </td>
-                                <td> {{$stagiaire->sexe_stg}} </td>
-                                <td> {{$stagiaire->num_carte_stag}} </td>
-                                <td> {{$stagiaire->status_stag}} </td>
+                                <td> {{$document->stagiaire->nom_stagiaire}} </td>
+                                <td> {{$document->stagiaire->prenom_stag}} </td>
+                                <td> {{$document->stagiaire->date_nais}} </td>
+                                <td> {{$document->stagiaire->sexe_stg}} </td>
+                                <td> {{$document->stagiaire->num_carte_stag}} </td>
+                                @if ($document->preuve_paiement == null)
+                                  <td>
+                                      <div class="badge badge-outline-warning">EN ATTENTE</div>
+                                  </td>
+                                @else
+                                  <td>
+                                      <div class="badge badge-outline-success">VALIDE</div>
+                                  </td>
+                                @endif
                                 <td> <div class="dropdown">
                             <a id="dropdownMenuIconButton1" data-toggle="dropdown" >
                               <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                              <a class="dropdown-item" href=" {{ route('stagiaireUpdateForm', ['id' => $stagiaire->id]) }} "><i class="mdi mdi-pencil"></i> Modifier</a>
-                              <a class="dropdown-item" href=" {{ route('stagiaireDelete', ['id' => $stagiaire->id]) }} "><i class="mdi mdi-bitbucket"></i> Supprimer</a>
+                              <a class="dropdown-item" href=" {{ route('stagiaireUpdateForm', ['id' => $document->id]) }} "><i class="mdi mdi-pencil"></i> Modifier</a>
+                              <a class="dropdown-item" href=" {{ route('stagiaireDelete', ['id' => $document->id]) }} "><i class="mdi mdi-bitbucket"></i> Supprimer</a>
                             </div>
                           </div> </td>
                             </tr>

@@ -191,6 +191,12 @@
                         <input type="file" class="form-control" name="bvm" placeholder="Bonne vie et moeurs">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputUsername1">Preuve de Paiement</label>
+                        <input type="file" class="form-control" name="prpaiement" placeholder="Bonne vie et moeurs">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

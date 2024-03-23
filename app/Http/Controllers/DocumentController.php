@@ -28,6 +28,7 @@ class DocumentController extends Controller
         $document->attestation_med = $request->attmed;
         $document->attestation_nationalite = $request->attnat;
         $document->bonne_vie_moeurs = $request->bvm;
+        $document->preuve_paiement = $request->prpaiement;
         $document->update();
 
         return redirect('document');

@@ -9,17 +9,13 @@
             <div class="row">
                 <div class="col-9">
                 <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$12.34</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                    <h3 class="mb-0"> {{$countStgV}} </h3>
                 </div>
                 </div>
                 <div class="col-3">
-                <div class="icon icon-box-success ">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                </div>
                 </div>
             </div>
-            <h6 class="text-muted font-weight-normal">Potential growth</h6>
+            <h6 class="text-muted font-weight-normal">Inscription validées</h6>
             </div>
         </div>
         </div>
@@ -29,17 +25,13 @@
             <div class="row">
                 <div class="col-9">
                 <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$17.34</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p>
+                    <h3 class="mb-0"> {{$countStgNv}} </h3>
                 </div>
                 </div>
                 <div class="col-3">
-                <div class="icon icon-box-success">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                </div>
                 </div>
             </div>
-            <h6 class="text-muted font-weight-normal">Revenue current</h6>
+            <h6 class="text-muted font-weight-normal">Inscriptions en attente</h6>
             </div>
         </div>
         </div>
@@ -50,16 +42,12 @@
                 <div class="col-9">
                 <div class="d-flex align-items-center align-self-start">
                     <h3 class="mb-0">$12.34</h3>
-                    <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p>
                 </div>
                 </div>
                 <div class="col-3">
-                <div class="icon icon-box-danger">
-                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
-                </div>
                 </div>
             </div>
-            <h6 class="text-muted font-weight-normal">Daily Income</h6>
+            <h6 class="text-muted font-weight-normal">Formations encours</h6>
             </div>
         </div>
         </div>
@@ -70,16 +58,12 @@
                 <div class="col-9">
                 <div class="d-flex align-items-center align-self-start">
                     <h3 class="mb-0">$31.53</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
                 </div>
                 </div>
                 <div class="col-3">
-                <div class="icon icon-box-success ">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                </div>
                 </div>
             </div>
-            <h6 class="text-muted font-weight-normal">Expense current</h6>
+            <h6 class="text-muted font-weight-normal">Formations terminées</h6>
             </div>
         </div>
         </div>
@@ -89,7 +73,7 @@
         <div class="col-12 grid-margin">
         <div class="card">
             <div class="card-body">
-            <h4 class="card-title">Order Status</h4>
+            <h4 class="card-title">Stagiaires</h4>
             <div class="table-responsive">
                 <table class="table">
                 <thead>
@@ -101,121 +85,40 @@
                         </label>
                         </div>
                     </th>
-                    <th> Client Name </th>
-                    <th> Order No </th>
-                    <th> Product Cost </th>
-                    <th> Project </th>
-                    <th> Payment Mode </th>
-                    <th> Start Date </th>
-                    <th> Payment Status </th>
+                    <th> Nom</th>
+                    <th> Postnom </th>
+                    <th> Prenom </th>
+                    <th> Num Carte </th>
+                    <th> Date inscription</th>
+                    <th> Status</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach ($documents as $document)
                     <tr>
-                    <td>
-                        <div class="form-check form-check-muted m-0">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                        </div>
-                    </td>
-                    <td>
-                        <img src="assets/images/faces/face1.jpg" alt="image" />
-                        <span class="pl-2">Henry Klein</span>
-                    </td>
-                    <td> 02312 </td>
-                    <td> $14,500 </td>
-                    <td> Dashboard </td>
-                    <td> Credit card </td>
-                    <td> 04 Dec 2019 </td>
-                    <td>
-                        <div class="badge badge-outline-success">Approved</div>
-                    </td>
+                        <td>
+                            <div class="form-check form-check-muted m-0">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                            </label>
+                            </div>
+                        </td>
+                        <td> {{$document->stagiaire->nom_stagiaire}} </td>
+                        <td> {{$document->stagiaire->postnom_stag}} </td>
+                        <td> {{$document->stagiaire->prenom_stag}} </td>
+                        <td> {{$document->stagiaire->num_carte_stag}} </td>
+                        <td> {{$document->stagiaire->created_at}} </td>
+                        @if ($document->preuve_paiement == null)
+                            <td>
+                                <div class="badge badge-outline-warning">EN ATTENTE</div>
+                            </td>
+                        @else
+                            <td>
+                                <div class="badge badge-outline-success">VALIDE</div>
+                            </td>
+                        @endif
                     </tr>
-                    <tr>
-                    <td>
-                        <div class="form-check form-check-muted m-0">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                        </div>
-                    </td>
-                    <td>
-                        <img src="assets/images/faces/face2.jpg" alt="image" />
-                        <span class="pl-2">Estella Bryan</span>
-                    </td>
-                    <td> 02312 </td>
-                    <td> $14,500 </td>
-                    <td> Website </td>
-                    <td> Cash on delivered </td>
-                    <td> 04 Dec 2019 </td>
-                    <td>
-                        <div class="badge badge-outline-warning">Pending</div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="form-check form-check-muted m-0">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                        </div>
-                    </td>
-                    <td>
-                        <img src="assets/images/faces/face5.jpg" alt="image" />
-                        <span class="pl-2">Lucy Abbott</span>
-                    </td>
-                    <td> 02312 </td>
-                    <td> $14,500 </td>
-                    <td> App design </td>
-                    <td> Credit card </td>
-                    <td> 04 Dec 2019 </td>
-                    <td>
-                        <div class="badge badge-outline-danger">Rejected</div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="form-check form-check-muted m-0">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                        </div>
-                    </td>
-                    <td>
-                        <img src="assets/images/faces/face3.jpg" alt="image" />
-                        <span class="pl-2">Peter Gill</span>
-                    </td>
-                    <td> 02312 </td>
-                    <td> $14,500 </td>
-                    <td> Development </td>
-                    <td> Online Payment </td>
-                    <td> 04 Dec 2019 </td>
-                    <td>
-                        <div class="badge badge-outline-success">Approved</div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="form-check form-check-muted m-0">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                        </div>
-                    </td>
-                    <td>
-                        <img src="assets/images/faces/face4.jpg" alt="image" />
-                        <span class="pl-2">Sallie Reyes</span>
-                    </td>
-                    <td> 02312 </td>
-                    <td> $14,500 </td>
-                    <td> Website </td>
-                    <td> Credit card </td>
-                    <td> 04 Dec 2019 </td>
-                    <td>
-                        <div class="badge badge-outline-success">Approved</div>
-                    </td>
-                    </tr>
+                @endforeach
                 </tbody>
                 </table>
             </div>

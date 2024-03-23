@@ -18,8 +18,9 @@ class StagiaireController extends Controller
     public function index()
     {
         $stagiaires = Stagiaire::all();
-
-        return view('stagiaire.stagiaire', compact('stagiaires'));
+        $documents = Document::all();
+ 
+        return view('stagiaire.stagiaire', compact('stagiaires', 'documents'));
     }
 
     public function addform()

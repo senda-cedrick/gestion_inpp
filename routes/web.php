@@ -3,9 +3,11 @@
 use App\Http\Controllers\CoordonnerController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InscripSolicitController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\StagiaireController;
+use App\Models\Stagiaire;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $countStg = Stagiaire::count();
+    $stagiaires = Stagiaire::all();
+    return view('welcome', compact('countStg', 'stagiaires'));
+});
+
+Route::controller(IndexController::class)->group(function(){
+    Route::get('/', 'index')->name('filiere');
+    
 });
 
 Route::controller(FiliereController::class)->group(function(){

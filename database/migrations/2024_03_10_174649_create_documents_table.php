@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('stagiaire_id');
             $table->foreign('stagiaire_id')->references('id')->on('stagiaires')->onDelete('cascade')->onUpdate('cascade');
             $table->string('photo_pass')->nullable();
+            $table->string('preuve_paiement')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -22,7 +22,7 @@
                                 <th>Bulletin1</th>
                                 <th>Bulletin2</th>
                                 <th>Attestation Médicale</th>
-                                <th>Bonne vie et moeurs</th>
+                                <th>Preuve de paiement</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -34,7 +34,7 @@
                                 <td> {{$document->bulletins}} </td>
                                 <td> {{$document->bulletins2}} </td>
                                 <td> {{$document->attestation_med}} </td>
-                                <td> {{$document->bonne_vie_moeurs}} </td>
+                                <td> {{$document->preuve_paiement}} </td>
                                 <td> <div class="dropdown">
                             <a id="dropdownMenuIconButton1" data-toggle="dropdown" >
                               <i class="mdi mdi-dots-vertical"></i>

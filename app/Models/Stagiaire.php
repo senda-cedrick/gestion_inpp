@@ -35,4 +35,9 @@ class Stagiaire extends Model
     {
         return $this->hasMany(Coordonner::class);
     }
+
+    public function document()
+    {
+        return $this->belongsTo(Document::class);
+    }
 }

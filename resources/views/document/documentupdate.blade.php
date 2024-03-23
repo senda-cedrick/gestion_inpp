@@ -51,6 +51,10 @@
                         <label for="exampleInputUsername1">Bonne vie et moeurs</label>
                         <input type="file" class="form-control" name="bvm" placeholder="Bonne vie et moeurs">
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputUsername1">Preuve Paiement</label>
+                        <input type="file" class="form-control" name="prpaiement" placeholder="Bonne vie et moeurs">
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
                 <button type="reset" class="btn btn-dark">Annuler</button>
