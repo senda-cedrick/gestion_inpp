@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class CoordonnerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $coordonnees = Coordonner::all();
         $stagiaires = Stagiaire::all();

@@ -1,132 +1,77 @@
-@extends('index')
-
-@section('content')
-<div class="content-wrapper">
-    <div class="row">
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-            <div class="row">
-                <div class="col-9">
-                <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0"> {{$countStgV}} </h3>
-                </div>
-                </div>
-                <div class="col-3">
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-4 mx-auto">
+              <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Login</h3>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                  <div class="form-group">
+                    <label>Email *</label>
+                    <input type="text" class="form-control p_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label>Mot de passe *</label>
+                    <input type="password" class="form-control p_input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Connexion</button>
+                  </div>
+                  <a href="{{ route('register') }}"> S'enregistrer</a></p>
+                </form>
+              </div>
             </div>
-            <h6 class="text-muted font-weight-normal">Inscription validées</h6>
-            </div>
+          </div>
+          <!-- content-wrapper ends -->
         </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-            <div class="row">
-                <div class="col-9">
-                <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0"> {{$countStgNv}} </h3>
-                </div>
-                </div>
-                <div class="col-3">
-                </div>
-            </div>
-            <h6 class="text-muted font-weight-normal">Inscriptions en attente</h6>
-            </div>
-        </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-            <div class="row">
-                <div class="col-9">
-                <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$12.34</h3>
-                </div>
-                </div>
-                <div class="col-3">
-                </div>
-            </div>
-            <h6 class="text-muted font-weight-normal">Formations encours</h6>
-            </div>
-        </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-            <div class="row">
-                <div class="col-9">
-                <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$31.53</h3>
-                </div>
-                </div>
-                <div class="col-3">
-                </div>
-            </div>
-            <h6 class="text-muted font-weight-normal">Formations terminées</h6>
-            </div>
-        </div>
-        </div>
+        <!-- row ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
     </div>
-    
-    <div class="row ">
-        <div class="col-12 grid-margin">
-        <div class="card">
-            <div class="card-body">
-            <h4 class="card-title">Stagiaires</h4>
-            <div class="table-responsive">
-                <table class="table">
-                <thead>
-                    <tr>
-                    <th>
-                        <div class="form-check form-check-muted m-0">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                        </div>
-                    </th>
-                    <th> Nom</th>
-                    <th> Postnom </th>
-                    <th> Prenom </th>
-                    <th> Num Carte </th>
-                    <th> Date inscription</th>
-                    <th> Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($documents as $document)
-                    <tr>
-                        <td>
-                            <div class="form-check form-check-muted m-0">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
-                            </label>
-                            </div>
-                        </td>
-                        <td> {{$document->stagiaire->nom_stagiaire}} </td>
-                        <td> {{$document->stagiaire->postnom_stag}} </td>
-                        <td> {{$document->stagiaire->prenom_stag}} </td>
-                        <td> {{$document->stagiaire->num_carte_stag}} </td>
-                        <td> {{$document->stagiaire->created_at}} </td>
-                        @if ($document->preuve_paiement == null)
-                            <td>
-                                <div class="badge badge-outline-warning">EN ATTENTE</div>
-                            </td>
-                        @else
-                            <td>
-                                <div class="badge badge-outline-success">VALIDE</div>
-                            </td>
-                        @endif
-                    </tr>
-                @endforeach
-                </tbody>
-                </table>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    
-    </div>
-
-@endsection
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('assets/js/misc.js') }}"></script>
+    <script src="{{ asset('assets/js/settings.js') }}"></script>
+    <script src="{{ asset('assets/js/todolist.js') }}"></script>
+    <!-- endinject -->
+  </body>
+</html>

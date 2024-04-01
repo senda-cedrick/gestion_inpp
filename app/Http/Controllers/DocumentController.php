@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\Stagiaire;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $documents = Document::all();
 
@@ -30,6 +37,15 @@ class DocumentController extends Controller
         $document->bonne_vie_moeurs = $request->bvm;
         $document->preuve_paiement = $request->prpaiement;
         $document->update();
+
+        $stagiaire = Stagiaire::find($document->stagiaire_id);
+        if ($request->prpaiement == null) {
+            $stagiaire->status_stag = 'EN ATTENTE'; 
+        } else {
+            $stagiaire->status_stag = 'Valide';
+        }
+        
+        $stagiaire->update();
 
         return redirect('document');
     }

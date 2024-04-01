@@ -53,6 +53,7 @@ Route::controller(OptionController::class)->group(function(){
 Route::controller(StagiaireController::class)->group(function(){
     Route::get('stagiaire', 'index')->name('stagiaire');
     Route::get('stagiaireAdd', 'addform')->name('stagiaireAddForm');
+    Route::get('findoption/{filiereId}', 'option')->name('findoption');
     Route::post('stagiaireddprocess', 'addstagiaire')->name('stagiaireAddProcess');
     Route::get('stagiaireUpdateForm', 'updateform')->name('stagiaireUpdateForm');
     Route::post('stagiaireUpdateProcess', 'updateProcess')->name('stagiaireUpdateProcess');
@@ -78,4 +79,9 @@ Route::controller(InscripSolicitController::class)->group(function(){
     Route::get('inscriptionUpdateForm', 'updateform')->name('inscriptionUpdateForm');
     Route::post('inscriptionUpdateProcess', 'updateProcess')->name('inscriptionUpdateProcess');
     Route::get('inscriptionDelete', 'delete')->name('inscriptionDelete');
+    Route::post('print', 'print')->name('print');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

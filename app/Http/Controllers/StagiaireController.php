@@ -15,12 +15,22 @@ use Illuminate\Support\Str;
 
 class StagiaireController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $stagiaires = Stagiaire::all();
-        $documents = Document::all();
- 
-        return view('stagiaire.stagiaire', compact('stagiaires', 'documents'));
+        $data['filieres'] = Filiere::get(["nom_filiere", "id"]);
+        $options = Option::all();
+        $documents = Document::latest()->paginate(20);
+
+        return view(
+            'stagiaire.stagiaire',
+            $data,
+            compact('stagiaires', 'documents', 'options')
+        );
     }
 
     public function addform()
@@ -28,6 +38,12 @@ class StagiaireController extends Controller
         $filieres = Filiere::all();
         $options = Option::all();
         return view('stagiaire.stagiaireadd', compact('filieres', 'options'));
+    }
+
+    public function option($filiereId)
+    {
+        $options = Option::where('filiere_id', $filiereId)->get();
+        return response()->json($options);
     }
 
     public function addstagiaire(Request $request)

@@ -112,7 +112,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="exampleInputUsername1">Pays *</label>
-                        <input type="text" class="form-control" name="pays" placeholder="Pays">
+                        <input type="text" class="form-control" name="pays" placeholder="Pays" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -122,13 +122,13 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="exampleInputUsername1">District *</label>
-                        <input type="text" class="form-control" name="district" placeholder="District">
+                        <input type="text" class="form-control" name="district" placeholder="District" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="form-group col-md-4">
                         <label for="exampleInputUsername1">Filière *</label>
-                        <select class="form-control" name="filiere">
+                        <select id="filieres" class="form-control" name="filiere">
                         <option value=""> -- -- </option>    
                             @foreach ($filieres as $filiere)
                             <option value="{{$filiere->id}}">{{$filiere->nom_filiere}}</option>
@@ -137,11 +137,8 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="exampleInputUsername1">Option *</label>
-                        <select class="form-control" name="option">
-                        <option value=""> -- -- </option>    
-                            @foreach ($options as $option)
-                            <option value="{{$option->id}}">{{$option->nom_option}}</option>
-                            @endforeach
+                        <select id="options" class="form-control" name="option">
+                        
                         </select>
                     </div>
                 </div>
@@ -204,5 +201,29 @@
 <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
 <button type="reset" class="btn btn-dark">Annuler</button>
 </form>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#filieres').on('change', function(){
+            var filiereId = $(this).val();
+            
+            $.ajax({
+                url:'findoption/' + filiereId,
+                type: 'GET',
+                dataType:'json',
+                success: function (data) {
+                    var optionsDropdown = $('#options');
+                    optionsDropdown.empty();
+                    $('#options').html('<option value=""> -- -- </option>');
+                    $.each(data, function(key, value){
+                        optionsDropdown.append('<option value="' + value.id + '">' + value.nom_option + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 @endsection

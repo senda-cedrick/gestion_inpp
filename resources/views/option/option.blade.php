@@ -5,8 +5,8 @@
               <h3 class="page-title"> Options </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/">Acceuil334444</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Options111188888</li>
+                  <li class="breadcrumb-item"><a href="/">Acceuil</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Options</li>
                 </ol>
               </nav>
             </div>
