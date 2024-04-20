@@ -9,6 +9,7 @@ use App\Models\IdCounter;
 use App\Models\InscripSolicit;
 use App\Models\Option;
 use App\Models\Stagiaire;
+use App\Models\Vacation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -37,7 +38,8 @@ class StagiaireController extends Controller
     {
         $filieres = Filiere::all();
         $options = Option::all();
-        return view('stagiaire.stagiaireadd', compact('filieres', 'options'));
+        $vacations = Vacation::all();
+        return view('stagiaire.stagiaireadd', compact('filieres', 'options', 'vacations'));
     }
 
     public function option($filiereId)
@@ -73,6 +75,7 @@ class StagiaireController extends Controller
             'num_passeport' => $request->passeport,
             'num_carte_elect' => $request->carteElecteur,
             'num_carte_stag' => $numCartStg,
+            'vacation_id' => $request->vacation,
             'status_stag' => "Attente",
         ]);
 

@@ -76,6 +76,15 @@
                         <label for="exampleInputUsername1">N° Passeport</label>
                         <input type="text" class="form-control" name="passeport" placeholder="N° Passeport">
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputUsername1">Vacation *</label>
+                        <select class="form-control" name="vacation" required>
+                        <option value=""> -- -- </option>    
+                            @foreach ($vacations as $vacation)
+                            <option value="{{$vacation->id}}">{{$vacation->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <p> <em> * Champ obligatoire </em></p>
         </div>

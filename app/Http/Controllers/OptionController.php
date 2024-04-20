@@ -40,7 +40,7 @@ class OptionController extends Controller
     }
 
     public function updateProcess(Request $request){
-        $option = option::find($request->id);
+        $option = Option::find($request->id);
         $option->filiere_id = $request->filiere_id;
         $option->nom_option = $request->name;
         $option->update();

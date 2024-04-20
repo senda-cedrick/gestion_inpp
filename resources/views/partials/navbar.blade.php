@@ -112,5 +112,45 @@
             <span class="menu-title">Options</span>
         </a>
         </li>
+        <li class="nav-item menu-items">
+        <a class="nav-link" href=" {{ route('vacation') }} ">
+            <span class="menu-icon">
+            <i class="mdi mdi-grid"></i>
+            </span>
+            <span class="menu-title">Vacation</span>
+        </a>
+        </li>
+        <li class="nav-item menu-items">
+        <a class="nav-link" href=" {{ route('service') }} ">
+            <span class="menu-icon">
+            <i class="mdi mdi-grid"></i>
+            </span>
+            <span class="menu-title">Service</span>
+        </a>
+        </li>
+        <li class="nav-item menu-items">
+        <a class="nav-link" href=" {{ route('formateur') }} ">
+            <span class="menu-icon">
+            <i class="mdi mdi-grid"></i>
+            </span>
+            <span class="menu-title">Formateur</span>
+        </a>
+        </li>
+        <li class="nav-item menu-items">
+        <a class="nav-link" href=" {{ route('matiere') }} ">
+            <span class="menu-icon">
+            <i class="mdi mdi-grid"></i>
+            </span>
+            <span class="menu-title">Matière</span>
+        </a>
+        </li>
+        <li class="nav-item menu-items">
+        <a class="nav-link" href=" {{ route('formation') }} ">
+            <span class="menu-icon">
+            <i class="mdi mdi-grid"></i>
+            </span>
+            <span class="menu-title">Formation</span>
+        </a>
+        </li>
     </ul>
 </nav>

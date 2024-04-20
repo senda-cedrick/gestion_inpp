@@ -3,10 +3,15 @@
 use App\Http\Controllers\CoordonnerController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\FormateurController;
+use App\Http\Controllers\FormationController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InscripSolicitController;
+use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StagiaireController;
+use App\Http\Controllers\VacationController;
 use App\Models\Stagiaire;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +85,53 @@ Route::controller(InscripSolicitController::class)->group(function(){
     Route::post('inscriptionUpdateProcess', 'updateProcess')->name('inscriptionUpdateProcess');
     Route::get('inscriptionDelete', 'delete')->name('inscriptionDelete');
     Route::post('print', 'print')->name('print');
+});
+
+Route::controller(VacationController::class)->group(function(){
+    Route::get('vacation', 'index')->name('vacation');
+    Route::get('vacationAdd', 'addform')->name('vacationAddForm');
+    Route::post('vacationaddprocess', 'addvacation')->name('vacationAddProcess');
+    Route::get('vacationUpdateForm', 'updateform')->name('vacationUpdateForm');
+    Route::post('vacationUpdateProcess', 'updateProcess')->name('vacationUpdateProcess');
+    Route::get('vacationDelete', 'delete')->name('vacationDelete');
+});
+
+Route::controller(ServiceController::class)->group(function(){
+    Route::get('service', 'index')->name('service');
+    Route::get('serviceAdd', 'addform')->name('serviceAddForm');
+    Route::post('serviceaddprocess', 'addservice')->name('serviceAddProcess');
+    Route::get('serviceUpdateForm', 'updateform')->name('serviceUpdateForm');
+    Route::post('serviceUpdateProcess', 'updateProcess')->name('serviceUpdateProcess');
+    Route::get('serviceDelete', 'delete')->name('serviceDelete');
+});
+
+Route::controller(FormateurController::class)->group(function(){
+    Route::get('formateur', 'index')->name('formateur');
+    Route::get('formateurAdd', 'addform')->name('formateurAddForm');
+    Route::post('formateuraddprocess', 'addformateur')->name('formateurAddProcess');
+    Route::get('formateurUpdateForm', 'updateform')->name('formateurUpdateForm');
+    Route::post('formateurUpdateProcess', 'updateProcess')->name('formateurUpdateProcess');
+    Route::get('formateurDelete', 'delete')->name('formateurDelete');
+});
+
+Route::controller(MatiereController::class)->group(function(){
+    Route::get('matiere', 'index')->name('matiere');
+    Route::get('matiereAdd', 'addform')->name('matiereAddForm');
+    Route::post('matiereaddprocess', 'addmatiere')->name('matiereAddProcess');
+    Route::get('matiereUpdateForm', 'updateform')->name('matiereUpdateForm');
+    Route::post('matiereUpdateProcess', 'updateProcess')->name('matiereUpdateProcess');
+    Route::get('matiereDelete', 'delete')->name('matiereDelete');
+});
+
+Route::controller(FormationController::class)->group(function(){
+    Route::get('formation', 'index')->name('formation');
+    Route::get('formationAdd', 'addform')->name('formationAddForm');
+    Route::post('formationaddprocess', 'addformation')->name('formationAddProcess');
+    Route::get('formationUpdateForm', 'updateform')->name('formationUpdateForm');
+    Route::post('formationUpdateProcess', 'updateProcess')->name('formationUpdateProcess');
+    Route::get('formationDelete', 'delete')->name('formationDelete');
+    Route::get('findoptionf/{filiereIdf}', 'option')->name('findoptionf');
+    Route::get('liste', 'liste')->name('liste');
 });
 
 Auth::routes();

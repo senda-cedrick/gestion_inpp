@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('prenom_stag');
             $table->string('sexe_stg');
             $table->string('status_stag')->nullable();
+            $table->unsignedBigInteger('vacation_id');
+            $table->foreign('vacation_id')->references('id')->on('vacations')->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

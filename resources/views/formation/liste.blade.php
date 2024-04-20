@@ -2,37 +2,46 @@
 @section('content')
     <div class="content-wrapper">
     <div class="page-header">
-              <h3 class="page-title"> Options </h3>
+              <h3 class="page-title"> Liste des Stagiaires</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/">Acceuil</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Options</li>
+                  <li class="breadcrumb-item"><a href=" {{route('formation')}} ">Formation</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Liste des Stagiares</li>
                 </ol>
               </nav>
             </div>
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                <a class="btn btn-primary"  href=" {{ route('optionAddForm') }} ">Ajouter</a>
+                
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Nom</th>
+                                <th>CODE</th>
+                                <th>NOM</th>
+                                <th>POSTNOM</th>
+                                <th>PRENOM</th>
+                                <th>GENRE</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($options as $option)
+                            @foreach ($listes as $liste)
                             <tr>
-                                <td> {{$option->nom_option}} </td>
+                                <td> {{$liste->stagiaire->num_carte_stag}} </td>
+                                <td> {{$liste->stagiaire->nom_stagiaire}} </td>
+                                <td> {{$liste->stagiaire->postnom_stag}} </td>
+                                <td> {{$liste->stagiaire->prenom_stag}} </td>
+                                <td> {{$liste->stagiaire->sexe_stg}} </td>
                                 <td> <div class="dropdown">
                             <a id="dropdownMenuIconButton1" data-toggle="dropdown" >
                               <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                              <a class="dropdown-item" href=" {{ route('optionUpdateForm', ['id' => $option->id]) }} "><i class="mdi mdi-pencil"></i> Modifier</a>
-                              <a class="dropdown-item" href=" {{ route('optionDelete', ['id' => $option->id]) }} "><i class="mdi mdi-bitbucket"></i> Supprimer</a>
+                              <a class="dropdown-item" href="  "><i class="mdi mdi-pencil"></i> Modifier</a>
+                              <a class="dropdown-item" href="  "><i class="mdi mdi-bitbucket"></i> Supprimer</a>
+                              <a class="dropdown-item" href=" "><i class="mdi mdi-bitbucket"></i> Voir</a>
                             </div>
                           </div> </td>
                             </tr>

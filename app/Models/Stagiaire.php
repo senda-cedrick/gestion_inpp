@@ -29,6 +29,7 @@ class Stagiaire extends Model
         'prenom_stag',
         'sexe_stg',
         'status_stag',
+        'vacation_id'
     ];
 
     public function coordonneer()
