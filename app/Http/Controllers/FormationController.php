@@ -16,7 +16,8 @@ class FormationController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index(){
+    public function index()
+    {
         $formations = Formation::all();
 
         return view('formation.formation', compact('formations'));
@@ -38,7 +39,8 @@ class FormationController extends Controller
         return response()->json($options);
     }
 
-    public function addformation(Request $request){
+    public function addformation(Request $request)
+    {
         $formation = new Formation();
         $formation->filiere_id = $request->filiere_id;
         $formation->option_id = $request->option_id;
@@ -52,7 +54,8 @@ class FormationController extends Controller
         return redirect('formation');
     }
 
-    public function updateform(Request $request){
+    public function updateform(Request $request)
+    {
         $formation = Formation::find($request->id);
         $filieres = Filiere::all();
         $options = Option::all();
@@ -60,7 +63,8 @@ class FormationController extends Controller
         return view('formation.formationupdate', compact('filieres', 'options', 'formateurs', 'formation'));
     }
 
-    public function updateProcess(Request $request){
+    public function updateProcess(Request $request)
+    {
         $formation = Formation::find($request->id);
         $formation->filiere_id = $request->filiere_id;
         $formation->option_id = $request->option_id;
@@ -74,7 +78,8 @@ class FormationController extends Controller
         return redirect('formation');
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $formation = Formation::find($request->id);
         $formation->delete();
 
@@ -86,8 +91,10 @@ class FormationController extends Controller
         $formation = Formation::find($request->id);
         $option = $formation->option_id;
 
-        $listes = InscripSolicit::where('option_id', $option)->get();
-
+        $listes = InscripSolicit::where('option_id', $option)
+            ->join('stagiaires', 'inscrip_solicits.stagiaire_id', '=', 'stagiaires.id')
+            ->where('stagiaires.status_stag', '=', 'Valide')
+            ->get();
         return view('formation.liste', compact('listes'));
     }
 }

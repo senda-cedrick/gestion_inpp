@@ -37,8 +37,11 @@
                                 <td> {{$formation->dateFin}} </td>
                                 <td> {{$formation->formateur->prenom}} {{$formation->formateur->name}} </td>
                                 <td> {{$formation->vacation->name}} </td>
-                                <?php $count = App\Models\InscripSolicit::where('option_id', $formation->option_id)->count();?>
-                                <td> <a href="#"> {{$count}} </a></td>
+                                <?php $count = App\Models\InscripSolicit::where('option_id', $formation->option_id)
+                                ->join('stagiaires', 'inscrip_solicits.stagiaire_id', '=', 'stagiaires.id')
+                                ->where('stagiaires.status_stag', '=', 'Valide')
+                                ->count();?>
+                                <td> <a href="{{ route('liste', ['id' => $formation->id]) }}"> {{$count}} </a></td>
                                 <td> <div class="dropdown">
                             <a id="dropdownMenuIconButton1" data-toggle="dropdown" >
                               <i class="mdi mdi-dots-vertical"></i>
